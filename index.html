@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>plmgrn</title>
+<meta name="description" content="Crafting stuff I'm interested in, ranging from libraries to webapps">
+<meta property="og:title" content="plmgrn">
+<meta property="og:description" content="Crafting stuff I'm interested in, ranging from libraries to webapps">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9824;</text></svg>">
+
+<!-- Preload fonts -->
+<link rel="preload" href="fonts/HomeVideo-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Snasm Lt.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Hurtmold-G5mA.woff2" as="font" type="font/woff2" crossorigin>
+
+<style>
+/* ==========================================================================
+   1. FONTS
+   ========================================================================== */
+
+/*Snasm for text body*/
+@font-face{
+  font-family:"Snasm";
+  src:url("fonts/Snasm Lt.woff2") format("woff2");
+  font-weight:1;
+  font-style:normal;
+  font-display:swap;
+}
+
+/*VCR Font for headings*/
+@font-face{
+  font-family:"VCR";
+  src:url("fonts/HomeVideo-Regular.woff2") format("woff2");
+  font-weight:500;
+  font-style:normal;
+  font-display:swap;
+}
+
+/*hurtmold for p*/
+@font-face{
+  font-family:"hurtmold";
+  src:url("fonts/Hurtmold-G5mA.woff2") format("woff2");
+  font-weight:500;
+  font-style:normal;
+  font-display:swap;
+}
+
+:root{
+  /* fallbacks, used while the webfonts load and if they fail */
+  --fallback-serif:Georgia,"Times New Roman",serif;
+  --fallback-sans:system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+
+  /*Font variables to use*/
+  --font-name-title:"hurtmold",var(--fallback-serif); /* name */
+  --font-display:"VCR",var(--fallback-serif);   /* titles */
+  --font-body:"Snasm",var(--fallback-sans);          /* paragraphs, everything else */
+  --font-default:var(--font-body);                  /* what <body> inherits */
+
+  /* palette */
+  --felt:#16271f;
+  --ivory:#f0ede4;
+  --muted:#9aaaa0;
+  --brass:#d2a64b;
+  --card-red:#c0564a;
+  --rule:rgba(240,237,228,.14);
+}
+
+/* ==========================================================================
+   2. BASE
+   ========================================================================== */
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font-default);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ivory);
+  background:var(--felt);
+  background-image:radial-gradient(rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:4px 4px;
+}
+
+/* every title uses the display face; nothing else does */
+.name,h2,h3{font-family:var(--font-display);letter-spacing:-.015em}
+.name,h1{font-family:var(--font-name-title)}
+
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:62rem;margin:0 auto;padding:clamp(2.5rem,7vw,6rem) clamp(1.25rem,5vw,3rem) 4rem}
+
+/* ==========================================================================
+   3. INTRO
+   ========================================================================== */
+.name{
+  font-weight:400;
+  font-size:clamp(3.2rem,40vw,6.5rem);
+  line-height:1.5;
+  margin:0;
+}
+.name .mark{color:var(--card-red)}
+
+.tagline{max-width:38ch;margin:1.25rem 0 0;font-size:clamp(1.05rem,2.2vw,1.2rem)}
+.intro{max-width:62ch;margin:1rem 0 0;color:var(--muted)}
+
+.links{list-style:none;display:flex;flex-wrap:wrap;gap:1.5rem;margin:2rem 0 0;padding:0}
+.links a{color:var(--ivory);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:2px}
+.links a:hover{color:var(--brass)}
+
+/* ==========================================================================
+   4. SECTIONS
+   ========================================================================== */
+.section{margin-top:clamp(3.5rem,9vw,6rem)}
+.section > h2{
+  font-weight:400;
+  font-size:1.6rem;
+  margin:0 0 1.75rem;
+  padding-bottom:.6rem;
+  border-bottom:1px solid var(--rule);
+}
+
+/* ---- projects ---- */
+.hand{list-style:none;margin:0;padding:0}
+.project{padding:1.7rem 0;border-top:1px solid var(--rule)}
+.project:first-child{border-top:none;padding-top:0}
+
+.project h3{display:flex;align-items:center;gap:.55rem;font-weight:500;font-size:1.35rem;margin:0}
+.project h3 img{width:1em;height:1em;flex:none;border-radius:2px}
+.project h3 a{
+  color:inherit;text-decoration:none;
+  background-image:linear-gradient(var(--brass),var(--brass));
+  background-size:0 1px;background-position:0 100%;background-repeat:no-repeat;
+  transition:background-size .25s ease;
+}
+.project h3 a:hover{background-size:100% 1px}
+.project p{margin:.55rem 0 0;max-width:64ch;color:var(--muted)}
+
+.project-foot{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem 1.4rem;margin-top:1rem;font-size:.92rem}
+.foot-group{display:flex;flex-wrap:wrap;align-items:baseline;gap:.35rem .9rem}
+.foot-group + .foot-group{padding-left:1.4rem;border-left:1px solid var(--rule)}
+.foot-label{color:var(--muted)}
+.stack{color:var(--brass);letter-spacing:.02em;margin:0}
+
+a.out{color:var(--ivory);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;white-space:nowrap}
+a.out::after{content:"\2197";margin-left:.2em;color:var(--muted)}
+a.out:hover{border-color:var(--brass)}
+a.out:hover::after{color:var(--brass)}
+
+/* ---- dated entries ---- */
+.entries{list-style:none;margin:0;padding:0}
+.entry{display:grid;grid-template-columns:9rem 1fr;gap:.25rem 1.5rem;padding:1.1rem 0;border-top:1px solid var(--rule)}
+.entry:first-child{border-top:none;padding-top:0}
+.entry .when{color:var(--muted);font-size:.95rem}
+.entry h3{margin:0;font-size:1.05rem;font-weight:500}
+.entry p{margin:.3rem 0 0;color:var(--muted);max-width:60ch}
+
+/* ---- tools ---- */
+.tool-group + .tool-group{margin-top:1.6rem}
+.tool-group h3{font-family:var(--font-body);font-weight:500;font-size:.95rem;letter-spacing:0;color:var(--muted);margin:0 0 .65rem}
+.tools{list-style:none;display:flex;flex-wrap:wrap;gap:.55rem;margin:0;padding:0}
+.tools li{border:1px solid var(--rule);border-radius:2px;padding:.28rem .65rem;font-size:.9rem}
+
+/* ==========================================================================
+   5. FOOTER + MOTION + BREAKPOINTS
+   ========================================================================== */
+footer{margin-top:clamp(4rem,10vw,7rem);padding-top:1.25rem;border-top:1px solid var(--rule);font-size:.9rem;color:var(--muted)}
+footer a{color:var(--muted)}
+
+@media (prefers-reduced-motion:no-preference){
+  .deal{
+    opacity:0;
+    transform:translateY(18px) rotate(-.5deg);
+    animation:deal .55s cubic-bezier(.2,.7,.3,1) forwards;
+    animation-delay:calc(var(--i,0) * 90ms);
+  }
+  @keyframes deal{to{opacity:1;transform:none}}
+}
+
+@media (max-width:40rem){
+  .entry{grid-template-columns:1fr}
+  .entry .when{order:-1}
+}
+@media (max-width:34rem){
+  body{font-size:16px}
+  .links{gap:1rem 1.25rem}
+  .foot-group + .foot-group{padding-left:0;border-left:none}
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <!-- intro -->
+  <h1 class="name deal" style="--i:0">plmgrn<span class="mark">.</span></h1>
+
+  <p class="tagline deal" style="--i:1">I build stuff functionality and quality first. Both in personal projects and professionally.</p>
+
+  <p class="intro deal" style="--i:2">Changing stack depending on mood trying to always learn more. Currently maining C/C++, C#, JS and Python.</p>
+
+  <ul class="links deal" style="--i:3">
+    <li><a href="https://github.com/plmgrn">GitHub</a></li>
+    <li><a href="mailto:plmgrn.dev@gmail.com">Developer Email</a></li>
+    <li><a href="https://www.linkedin.com/in/otto-palmgren/">LinkedIn</a></li>
+  </ul>
+
+  <!-- projects -->
+  <section class="section deal" style="--i:4">
+    <h2>Personal Projects</h2>
+    <ul class="hand">
+
+      <li class="project">
+        <h3><a href="https://github.com/plmgrn/Bloodborne-ArmorOptimizer/">Bloodborne Armor Optimizer</a></h3>
+        <p>A browser port of a VBA optimizer script I made: you set target stats and a weight budget, it searches the armor set for the best combinations. All data is static and bundled, so there is no backend to keep alive.</p>
+        <div class="project-foot">
+          <p class="stack">TypeScript | Vite</p>
+          <div class="foot-group">
+            <a class="out" href="https://plmgrn.github.io/Bloodborne-ArmorOptimizer/">Website</a>
+            <a class="out" href="https://github.com/plmgrn/Bloodborne-ArmorOptimizer/">Source</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="project">
+        <h3>
+          <img src="https://raw.githubusercontent.com/plmgrn/pricecharting-search/refs/heads/main/src/icons/pricecharting-search_64x64.png" alt="">
+          <a href="https://github.com/plmgrn/pricecharting-search">Search on PriceCharting</a>
+        </h3>
+        <p>Browser add-on for Chrome and Firefox that runs a PriceCharting query from highlighted text in the context menu, with local settings for search preferences. Made my videogame collecting hobby a lot less tedious.</p>
+        <div class="project-foot">
+          <p class="stack">JavaScript | AGPL-3.0</p>
+          <div class="foot-group">
+            <span class="foot-label">Install:</span>
+            <a class="out" href="https://chromewebstore.google.com/detail/ceacaeigjpbjgaidagikpilbldjnnafk">Chrome</a>
+            <a class="out" href="https://addons.mozilla.org/fi/firefox/addon/search-on-pricecharting/">Firefox</a>
+          </div>
+          <div class="foot-group">
+            <a class="out" href="https://github.com/plmgrn/pricecharting-search">Source</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="project">
+        <h3><a href="https://github.com/plmgrn/Tampere_Traffic_Cameras">Tampere Traffic Cameras</a></h3>
+        <p>Desktop GUI that pulls the latest images from traffic cameras around Tampere through the city's open API.</p>
+        <div class="project-foot">
+          <p class="stack">Python | tkinter</p>
+          <div class="foot-group">
+            <a class="out" href="https://github.com/plmgrn/Tampere_Traffic_Cameras">Source</a>
+          </div>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- placeholder: rename or delete -->
+  <section class="section deal" style="--i:5">
+    <h2>Studies &amp; work</h2>
+    <ul class="entries">
+
+      <li class="entry">
+        <span class="when">Currently</span>
+        <div>
+          <h3>B.Sc./M.Sc. (Tech.) Computing Sciences, Tampere University</h3>
+          <p>Software engineering</p>
+          <p>Bachelor's thesis on AVIF and JPEG XL</p>
+        </div>
+      </li>
+
+      <li class="entry">
+        <span class="when">2025-2026</span>
+        <div>
+          <h3>RnD Fullstack, Nokia technologies</h3>
+          <p>Developing and researching HEIF.</p>
+          <p>C/C++, JS+HTML/CSS, API/ABI, Python, Matlab</p>
+        </div>
+      </li>
+
+      <li class="entry">
+        <span class="when">Open</span>
+        <div>
+          <h3>Looking for part- or full-time work</h3>
+          <p>Tampere, remote, or elsewhere. Reachable on LinkedIn or by email.</p>
+        </div>
+      </li>
+
+    </ul>
+  </section>
+
+  <!-- buzzwords -->
+  <section class="section deal" style="--i:6">
+    <h2>tools / stack / hr buzzwords</h2>
+
+    <div class="tool-group">
+      <h3>Languages</h3>
+      <ul class="tools">
+        <li>C</li><li>C++</li><li>C#</li><li>Python</li><li>Java</li>
+        <li>JavaScript</li><li>TypeScript</li><li>SQL</li><li>HTML</li><li>CSS</li><li>Matlab</li>
+      </ul>
+    </div>
+
+    <div class="tool-group">
+      <h3>Build, test and tooling</h3>
+      <ul class="tools">
+        <li>CMake</li><li>CTest</li><li>GTest</li><li>valgrind</li>
+        <li>Git</li><li>CI/CD</li><li>GitHub Actions</li><li>QA</li>
+      </ul>
+    </div>
+
+    <div class="tool-group">
+      <h3>Web and interop</h3>
+      <ul class="tools">
+        <li>Frontend</li><li>Backend</li><li>Fullstack</li><li>API</li>
+        <li>WASM</li><li>cffi</li><li>ABI</li><li>Library design</li><li>Vite</li>
+      </ul>
+    </div>
+
+    <div class="tool-group">
+      <h3>Environments</h3>
+      <ul class="tools">
+        <li>Linux</li><li>WSL</li><li>VS Code</li><li>Qt Creator</li>
+        <li>PyCharm</li><li>NetBeans</li><li>GIMP</li><li>FOSS</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="deal" style="--i:7">
+    <p>HTML served with GitHub Pages. <a href="https://github.com/plmgrn">Source</a>.</p>
+  </footer>
+
+</main>
+</body>
+</html>
